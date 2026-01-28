@@ -46,9 +46,9 @@ const auth = {
     return !!user.value
   },
 
-  async register({ username, email, password }) {
+  async register({ username, email, password, role }) {
     if (api.baseUrl) {
-      const res = await api.post('/register', { username, email, password })
+      const res = await api.post('/register', { username, email, password, role })
       if (res.token) {
         api.setToken && api.setToken(res.token)
         localStorage.setItem(TOKEN_KEY, res.token)
@@ -63,7 +63,7 @@ const auth = {
     if (users.find(u => u.username === username || u.email === email)) {
       throw new Error('Username or email already exists')
     }
-    const newUser = { id: Date.now().toString(), username, email, password }
+    const newUser = { id: Date.now().toString(), username, email, password, role }
     users.push(newUser)
     writeUsers(users)
     user.value = newUser

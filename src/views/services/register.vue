@@ -39,8 +39,9 @@ const error = ref('')
 
 async function submit() {
   error.value = ''
+  const role = "student"  // fixed role for registration
   try {
-    await auth.register({ username: username.value, email: email.value, password: password.value })
+    await auth.register({ username: username.value, email: email.value, password: password.value, role: role})
     router.push({ name: 'Dashboard' })
   } catch (e) {
     try {
