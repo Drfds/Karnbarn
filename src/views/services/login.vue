@@ -13,7 +13,6 @@
         </div>
       </div>
     </div>
-    <p class="text-white mt-20 flex justify-center items-center mx-auto text-xl">พัฒนาโดย กฤษณชัย แซ่ลี้ | ฉันทวัฒน์ หวานอารมย์</p>
   </div>
 </template>
 

@@ -165,8 +165,6 @@
       <div>Token present: {{ tokenPresent }}</div>
       <div>Assignments fetched: {{ debugInfoCount }}</div>
     </div> -->
-          <p class="text-white mt-20 text-xl">พัฒนาโดย กฤษณชัย แซ่ลี้ | ฉันทวัฒน์ หวานอารมย์</p>
-
   </div>
   </main>
 </template>

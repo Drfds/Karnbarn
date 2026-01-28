@@ -4,7 +4,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
   </head>
-    <nav class="fixed top-0 left-0 w-full z-50 border-b border-gray-300 bg-[rgb(16,16,16)] py-3 md:py-8">
+    <nav class="fixed top-0 left-0 w-full z-50 border-b border-gray-300 py-3 md:py-8">
+    <!-- <nav class="fixed top-0 left-0 w-full z-50 border-b border-gray-300 bg-[rgb(16,16,16)] py-3 md:py-8"> -->
       <div class="container text-white mx-auto flex md:items-center md:justify-between flex-col md:flex-row pl-10 md:pl-0 pt-3 md:pt-0">
         <div class="text-3xl font-bold flex items-center pl-8">
           <a href="" @click="main">Karnบ้าน</a>

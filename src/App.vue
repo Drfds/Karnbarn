@@ -4,7 +4,11 @@ import Navbar from './components/nav.vue'
 </script>
 
 <template>
+  <div class="min-h-screen flex flex-col">
   <Navbar />
-  <router-view />   <!-- route จะ render หน้า Home / Dashboard / DiscordCallback -->
-  <!-- <Footer /> -->
+  <main class="flex-1">
+    <router-view />
+  </main>
+  <Footer />
+</div>
 </template>
