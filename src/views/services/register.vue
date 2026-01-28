@@ -8,11 +8,11 @@
         <input v-model="email" type="email" placeholder="อีเมล" class="w-full p-2 rounded bg-gray-700" />
         <input v-model="password" type="password" placeholder="รหัสผ่าน" class="w-full p-2 rounded bg-gray-700" />
         <label class="text-sm">บทบาท (role)</label>
-        <select v-model="role" class="w-full p-2 rounded bg-gray-700">
+        <!-- <select v-model="role" class="w-full p-2 rounded bg-gray-700">
           <option value="teacher">teacher</option>
           <option value="parent">parent</option>
           <option value="student">student</option>
-        </select>
+        </select> -->
 
         <div v-if="error" class="text-red-400 text-sm">{{ error }}</div>
 
@@ -40,7 +40,7 @@ const error = ref('')
 async function submit() {
   error.value = ''
   try {
-    await auth.register({ username: username.value, email: email.value, password: password.value, role: role.value })
+    await auth.register({ username: username.value, email: email.value, password: password.value })
     router.push({ name: 'Dashboard' })
   } catch (e) {
     try {
