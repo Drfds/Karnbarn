@@ -23,8 +23,7 @@ const login = () => {
         0 0 600px #363636,
         0 0 40px #9C9C9C
 ;">Karnบ้าน</h1>
-      <p class="text-white text-[20px]" style="word-wrap: break-word;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, in?
-      </p>
+      <p class="text-white text-[20px]" style="word-wrap: break-word;">เว็บเช็คการบ้านของนักเรียน</p>
       <button @click="login" class="border border-white rounded-full px-6 py-3 mt-8 text-white text-[20px] flex items-center gap-3 bg-[#1C1C1C] hover:bg-[#121212] hover:text-[rgb(204,204,204)] transition duration-300">
         Get start
         <svg class="arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
@@ -32,6 +31,7 @@ const login = () => {
           <polyline points="12 5 19 12 12 19"/>
         </svg>
       </button>
+      <p class="text-white mt-20 text-xl">พัฒนาโดย กฤษณชัย แซ่ลี้ | ฉันทวัฒน์ หวานอารมย์</p>
     </div>
   </main>
 </template>

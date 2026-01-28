@@ -20,6 +20,6 @@ export default defineConfig({
   server: {
     host: '0.0.0.0', // เปิดให้เข้าจากเครื่องอื่นได้
     port: 5173,       // กำหนดพอร์ต
-    allowedHosts: ['ayath.xyz'], // อนุญาตเฉพาะโดเมนนี้
+    allowedHosts: ['karnbarn.xn--12c2bdp3bjf8aq6e9aq2a00a.com'], // อนุญาตเฉพาะโดเมนนี้
   },
 })

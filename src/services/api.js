@@ -1,5 +1,6 @@
 const DEFAULT_HOST = (typeof window !== 'undefined' && window.location && window.location.hostname) ? window.location.hostname : 'localhost'
 // prefer explicit env var, otherwise try device hostname:3000
+// const BASE = import.meta.env.VITE_API_BASE || `https://api.สุรศักดิ์มนตรี.com`
 const BASE = import.meta.env.VITE_API_BASE || `http://localhost:3000`
 const TOKEN_KEY = 'ast_token'
 

@@ -7,7 +7,7 @@
     <nav class="fixed top-0 left-0 w-full z-50 border-b border-gray-300 bg-[rgb(16,16,16)] py-3 md:py-8">
       <div class="container text-white mx-auto flex md:items-center md:justify-between flex-col md:flex-row pl-10 md:pl-0 pt-3 md:pt-0">
         <div class="text-3xl font-bold flex items-center pl-8">
-          <a href="#main">Karnบ้าน</a>
+          <a href="" @click="main">Karnบ้าน</a>
 
           <!-- Hamburger Button -->
           <div 
@@ -34,7 +34,7 @@
             </svg>
           </button > -->
 
-          <button v-if="!loggedIn" class="flex items-center gap-2 px-4 py-2 rounded-[20px] bg-blue-800 transition-all duration-300 hover:bg-blue-900 hover:-translate-y-0.5 mt-5 md:mt-0" @click="loginWithDiscord">
+          <button v-if="!loggedIn" @click="login" class="flex items-center gap-2 px-4 py-2 rounded-[20px] bg-blue-800 transition-all duration-300 hover:bg-blue-900 hover:-translate-y-0.5 mt-5 md:mt-0">
             Login
           </button>
 
@@ -62,6 +62,14 @@ const menuOpen = ref(false)
 
 function toggleMenu() {
   menuOpen.value = !menuOpen.value
+}
+
+const login = () => {
+  router.push("/login")
+}
+
+const main = () => {
+  router.push("/")
 }
 
 // กำหนด class สำหรับ animation ของ bar แต่ละแท่ง
