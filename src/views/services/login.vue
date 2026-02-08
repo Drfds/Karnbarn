@@ -1,7 +1,7 @@
 <template class="">
   <div class="absolute inset-0 -z-10 opacity-[0.06] pointer-events-none" style="background-image:url(&quot;data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fillRule='evenodd'%3E%3Cg fill='%23ffffff' fillOpacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E&quot;)"></div>
   <div class="min-h-screen flex-col items-center justify-center mt-60">
-    <div class="w-full max-w-md mx-auto p-6 border-1 bg-[rgb(34,34,34)] rounded text-white">
+    <div class="w-full max-w-md mx-auto p-14 pt-0 text-white">
       <h2 class="text-2xl mb-4 text-center">เข้าสู่ระบบ</h2>
       <div class="space-y-3">
         <input v-model="email" type="email" placeholder="อีเมล" class="w-full p-2 rounded bg-gray-700" />
@@ -28,9 +28,36 @@ const error = ref('')
 
 async function submit() {
   error.value = ''
+    // await auth.login({ email: email.value, password: password.value })
+    // router.push({ name: 'Dashboard' })
   try {
-    await auth.login({ email: email.value, password: password.value })
-    router.push({ name: 'Dashboard' })
+    const result = await Swal.fire({
+      title: 'ข้อมูลถูกต้อง?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'ยืนยัน!'
+    })
+
+    if (!result.isConfirmed) return
+
+    const res = auth.login({ email: email.value, password: password.value })
+
+    if (res == true) {
+      await Swal.fire(
+        'เข้าสู่ระบบสำเร็จ!',
+        'คุณได้เข้าสู่ระบบเรียบร้อยแล้ว.',
+        'success'
+      )
+      router.push({ name: 'Dashboard' })
+    } else {
+      Swal.fire(
+        'เกิดข้อผิดพลาด!',
+        'ไม่สามารถเข้าสู่ระบบได้.',
+        'error'
+      )
+    }
   } catch (e) {
     // show backend message if present (API may return JSON string or Error)
     try {

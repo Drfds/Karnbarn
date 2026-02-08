@@ -47,51 +47,61 @@ const auth = {
   },
 
   async register({ username, email, password, role }) {
-    if (api.baseUrl) {
-      const res = await api.post('/register', { username, email, password, role })
-      if (res.token) {
-        api.setToken && api.setToken(res.token)
-        localStorage.setItem(TOKEN_KEY, res.token)
+    try {
+      if (api.baseUrl) {
+        const res = await api.post('/register', { username, email, password, role })
+        if (res.token) {
+          api.setToken && api.setToken(res.token)
+          localStorage.setItem(TOKEN_KEY, res.token)
+        }
+        const u = res.user || res
+        user.value = u
+        localStorage.setItem(STORAGE_LOGGED, JSON.stringify(u))
+        emitAuthChange()
+        return { success: true, message: 'Registration successful', user: u }
       }
-      const u = res.user || res
-      user.value = u
-      localStorage.setItem(STORAGE_LOGGED, JSON.stringify(u))
+      const users = readUsers()
+      if (users.find(u => u.username === username || u.email === email)) {
+        return { success: false, message: 'Username or email already exists' }
+      }
+      const newUser = { id: Date.now().toString(), username, email, password, role }
+      users.push(newUser)
+      writeUsers(users)
+      user.value = newUser
+      localStorage.setItem(STORAGE_LOGGED, JSON.stringify(newUser))
       emitAuthChange()
-      return u
+      return { success: true, message: 'Registration successful', user: newUser }
+    } catch (error) {
+      return { success: false, message: error.message }
     }
-    const users = readUsers()
-    if (users.find(u => u.username === username || u.email === email)) {
-      throw new Error('Username or email already exists')
-    }
-    const newUser = { id: Date.now().toString(), username, email, password, role }
-    users.push(newUser)
-    writeUsers(users)
-    user.value = newUser
-    localStorage.setItem(STORAGE_LOGGED, JSON.stringify(newUser))
-    emitAuthChange()
-    return newUser
   },
 
   async login({ email, password }) {
-    if (api.baseUrl) {
-      const res = await api.post('/login', { email, password })
-      if (res.token) {
-        api.setToken && api.setToken(res.token)
-        localStorage.setItem(TOKEN_KEY, res.token)
+    try {
+      if (api.baseUrl) {
+        const res = await api.post('/login', { email, password })
+        if (res.token) {
+          api.setToken && api.setToken(res.token)
+          localStorage.setItem(TOKEN_KEY, res.token)
+        }
+        const u = res.user || res
+        user.value = u
+        localStorage.setItem(STORAGE_LOGGED, JSON.stringify(u))
+        emitAuthChange()
+        return { success: true, message: 'Login successful', user: u }
       }
-      const u = res.user || res
+      const users = readUsers()
+      const u = users.find(x => x.email === email && x.password === password)
+      if (!u) {
+        return { success: false, message: 'Invalid credentials' }
+      }
       user.value = u
       localStorage.setItem(STORAGE_LOGGED, JSON.stringify(u))
       emitAuthChange()
-      return u
+      return { success: true, message: 'Login successful', user: u }
+    } catch (error) {
+      return { success: false, message: error.message }
     }
-    const users = readUsers()
-    const u = users.find(x => x.email === email && x.password === password)
-    if (!u) throw new Error('Invalid credentials')
-    user.value = u
-    localStorage.setItem(STORAGE_LOGGED, JSON.stringify(u))
-    emitAuthChange()
-    return u
   },
 
   logout() {

@@ -2,7 +2,7 @@
   <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
   </head>
     <nav class="fixed top-0 left-0 w-full z-50 border-b border-gray-300 py-3 md:py-8">
     <!-- <nav class="fixed top-0 left-0 w-full z-50 border-b border-gray-300 bg-[rgb(16,16,16)] py-3 md:py-8"> -->
@@ -20,7 +20,7 @@
             <span :class="barClass(2)"></span>
           </div>
         </div>
-      <div :class="['', menuOpen ? 'block bg-[rgb(16,16,16)]' : 'hidden', 'md:flex']">
+      <div :class="['', menuOpen ? 'block ' : 'hidden', 'md:flex']">
         <!-- <ul class="flex flex-col md:flex-row gap-4 md:gap-6 mt-8 md:mt-2 md:mr-10">
           <li><a href="" class="border border-transparent rounded-[10px]  transition-all duration-200 hover:text-[rgb(204,204,204)] hover:bg-[rgb(34,34,34)] px-2 py-1">Home</a></li>
           <li><a href="" class="border border-transparent rounded-[10px] px-2 py-1 transition-all duration-200 hover:text-[rgb(204,204,204)] hover:bg-[rgb(34,34,34)]">About</a></li>
@@ -90,9 +90,4 @@ function logout() {
 </script>
 
 <style>
-  .topnav {
-    font-family: "Itim", cursive;
-    font-weight: 400;
-    font-style: normal;
-  }
 </style>
