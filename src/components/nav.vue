@@ -21,13 +21,13 @@
             <span :class="barClass(2)"></span>
           </div> -->
           <div class="md:pt-4 pr-5">
-          <button v-if="!loggedIn" @click="login" class="flex text-xl items-center gap-2 px-5 py-2.5 rounded-[20px] bg-blue-800 transition-all duration-300 hover:bg-blue-900 hover:-translate-y-0.5 mt-5 md:mt-0">
+          <button v-if="!loggedIn" @click="login" class="flex text-xl items-center gap-2 px-4 py-2.5 rounded-[20px] bg-blue-800 transition-all duration-300 hover:bg-blue-900 hover:-translate-y-0.5 mt-5 md:mt-0">
             Login
           </button>
 
           <div v-else class="flex items-center gap-3">
             <span class="text-sm">{{ user.username }} <small class="text-gray-400">({{ user.role }})</small></span>
-            <button @click="logout" class="flex items-center gap-2 px-4 py-2 rounded-[20px] bg-red-800 transition-all duration-300 hover:bg-red-900 hover:-translate-y-0.5 mt-5 md:mt-0">Logout</button>
+            <button @click="logout" class="flex text-xl items-center gap-2 px-4 py-2.5 rounded-[20px] bg-red-800 transition-all duration-300 hover:bg-red-900 hover:-translate-y-0.5 mt-5 md:mt-0">Logout</button>
           </div>
           </div>
         </div>
