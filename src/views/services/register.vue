@@ -62,7 +62,7 @@ async function submit() {
       role
     })
 
-    if (res == true) {
+    if (res.success == true) {
       await Swal.fire(
         'สมัครสมาชิกสำเร็จ!',
         'คุณได้สมัครสมาชิกเรียบร้อยแล้ว.',

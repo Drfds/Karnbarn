@@ -44,7 +44,7 @@ async function submit() {
 
     const res = auth.login({ email: email.value, password: password.value })
 
-    if (res == true) {
+    if (res.success == true) {
       await Swal.fire(
         'เข้าสู่ระบบสำเร็จ!',
         'คุณได้เข้าสู่ระบบเรียบร้อยแล้ว.',
